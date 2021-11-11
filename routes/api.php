@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\UsuariosVeiculosController;
 use App\Http\Controllers\OrgaosController;
 use App\Http\Controllers\SetoresController;
 use App\Http\Controllers\FuncoesController;
@@ -93,6 +94,12 @@ Route::group([
         Route::post('/usuarios-digital', [UsuariosController::class, 'digital']); 
         Route::get('/usuarios-resetpass/{id}', [UsuariosController::class, 'reset_password']); 
         Route::post('/usuarios-changepass', [UsuariosController::class, 'change_password']); 
+
+        Route::get('/usuarios-veiculos', [UsuariosVeiculosController::class, 'index']); 
+        Route::get('/usuarios-veiculos/{id}', [UsuariosVeiculosController::class, 'where']); 
+        Route::post('/usuarios-veiculos', [UsuariosVeiculosController::class, 'post']); 
+        Route::put('/usuarios-veiculos', [UsuariosVeiculosController::class, 'put']);   
+        Route::delete('/usuarios-veiculos/{id}', [UsuariosVeiculosController::class, 'delete']); 
 
         Route::get('/orgaos', [OrgaosController::class, 'index']); 
         Route::get('/orgaos2', [OrgaosController::class, 'index2']); 

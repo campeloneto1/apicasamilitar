@@ -17,7 +17,8 @@ class FuncoesSeeder extends Seeder
          $init = [
             0 => ['nome' => 'Comandante'],
             1 => ['nome' => 'SubComandante'],
-            2 => ['nome' => 'Administrativo']
+            2 => ['nome' => 'Administrativo'],
+            3 => ['nome' => 'Operacional']
         ];
         DB::table('funcoes')->insert($init);
     }

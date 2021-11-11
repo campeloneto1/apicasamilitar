@@ -106,7 +106,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
-    protected $with = ['perfil','orgao','setor','funcao','posto_grad', 'estado', 'cidade', 'nivel'];
+    protected $with = ['perfil','orgao','setor','funcao','posto_grad', 'estado', 'cidade', 'nivel', 'veiculos'];
 
 
      public function perfil()
@@ -152,6 +152,11 @@ class User extends Authenticatable implements JWTSubject
     public function acessos()
     {
         return $this->hasMany(Acesso::class, 'user_id', 'id');
+    }
+
+    public function veiculos()
+    {
+        return $this->hasMany(UserVeiculo::class, 'user_id', 'id');
     }
 
     public function eventos()
