@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use Carbon\Carbon;
 use App\Models\Acesso;
+use App\Models\Garagem;
 use App\Models\Evento;
 
 class HomeController extends Controller
@@ -17,6 +18,15 @@ class HomeController extends Controller
             return Acesso::orderBy('id', 'desc')->limit(6)->get();
         }else{
             return Acesso::where('orgao_id', $user->orgao_id)->orderBy('id', 'desc')->limit(6)->get();
+        }
+    }
+
+    public function garagemacessos(){    
+         $user = Auth::user();
+        if($user->perfil->administrador){
+            return Garagem::orderBy('id', 'desc')->limit(6)->get();
+        }else{
+            return Garagem::where('orgao_id', $user->orgao_id)->orderBy('id', 'desc')->limit(6)->get();
         }
     }
 

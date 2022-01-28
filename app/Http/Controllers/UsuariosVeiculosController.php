@@ -17,21 +17,19 @@ class UsuariosVeiculosController extends Controller
     public function index(){    
         $user = Auth::user();
         if($user->perfil->administrador){
-            return UserVeiculo::with('usuario')->get();
+            return UserVeiculo::get();
         }else{
-            return UserVeiculo::with('usuario')->get();
+            return UserVeiculo::get();
         }
     }
 
     public function where(Request $request){    
-        return UserVeiculo::with('usuario')
-        ->where('placa', $request->id)
+        return UserVeiculo::where('placa', $request->id)
         ->orderBy('placa')->get();
     }
 
     public function find(Request $request){    
-       	return UserVeiculo::with('usuario')
-        ->find($request->id);
+       	return UserVeiculo::find($request->id);
     }
 
     public function post(Request $request){    

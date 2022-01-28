@@ -39,6 +39,7 @@ use App\Http\Controllers\ArquivosController;
 use App\Http\Controllers\SindicatosController;
 use App\Http\Controllers\RedesSociaisController;
 use App\Http\Controllers\RelatoriosController;
+use App\Http\Controllers\GaragemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,7 @@ Route::group([
         Route::get('/user-profile', [AuthController::class, 'userProfile']); 
 
         Route::get('/home-ultimos-acessos', [HomeController::class, 'ultimosacessos']); 
+        Route::get('/home-garagem-acessos', [HomeController::class, 'garagemacessos']); 
         Route::get('/home-proximos-eventos', [HomeController::class, 'proximoseventos']); 
 
         Route::get('/logs', [LogsController::class, 'index']); 
@@ -312,6 +314,15 @@ Route::group([
         Route::post('/arquivos-manifestacoes', [ArquivosController::class, 'postManifestacoes']); 
         Route::post('/arquivos-sindicatos', [ArquivosController::class, 'postSindicatos']); 
         Route::delete('/arquivos/{id}', [ArquivosController::class, 'delete']);
+
+
+        Route::get('/garagem', [GaragemController::class, 'index']); 
+        Route::get('/garagem2', [GaragemController::class, 'index2']); 
+        Route::get('/garagem/{id}', [GaragemController::class, 'find']); 
+        Route::post('/garagem', [GaragemController::class, 'post']); 
+        Route::put('/garagem', [GaragemController::class, 'put']);   
+        Route::delete('/garagem/{id}', [GaragemController::class, 'delete']);
+        Route::post('/garagem/registro', [GaragemController::class, 'registro']);
 
     });
 
