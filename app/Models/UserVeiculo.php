@@ -45,11 +45,11 @@ class UserVeiculo extends Model
      *
      * @var array
      */
-    protected $with = ['cor','marca','modelo','veiculo_tipo', 'usuario'];
+    protected $with = ['cor','marca','modelo','veiculo_tipo'];
 
      public function usuario()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
      public function cor()

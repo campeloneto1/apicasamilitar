@@ -11,25 +11,22 @@ use App\Models\Log;
 class UsuariosVeiculosController extends Controller
 {
    public function index2(){    
-       	return UserVeiculo::get();
+       	return UserVeiculo::with('usuario')->get();
     }
 
     public function index(){    
         $user = Auth::user();
-        if($user->perfil->administrador){
-            return UserVeiculo::get();
-        }else{
-            return UserVeiculo::get();
-        }
+        return UserVeiculo::with('usuario')->get();
+       
     }
 
     public function where(Request $request){    
-        return UserVeiculo::where('placa', $request->id)
+        return UserVeiculo::with('usuario')->where('placa', $request->id)
         ->orderBy('placa')->get();
     }
 
     public function find(Request $request){    
-       	return UserVeiculo::find($request->id);
+       	return UserVeiculo::with('usuario')->find($request->id);
     }
 
     public function post(Request $request){    
