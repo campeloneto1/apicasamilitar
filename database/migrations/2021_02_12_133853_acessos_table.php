@@ -17,7 +17,8 @@ class AcessosTable extends Migration
             $table->id();
            $table->integer('user_id'); 
            $table->integer('orgao_id'); 
-           $table->integer('posto_id');         
+           $table->integer('posto_id');
+           $table->string('observacao', 150)->nullable();         
            $table->date('data');
            $table->time('hora');   
 

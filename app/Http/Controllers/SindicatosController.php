@@ -27,6 +27,15 @@ class SindicatosController extends Controller
         ->orderBy('nome')->get();
     }
 
+    public function where2(Request $request){    
+        return Sindicato::with('pessoas', 'veiculos', 'arquivos')
+        ->where('nome','like','%'.$request->id.'%')
+        ->orWhere('email','like','%'.$request->id.'%')
+        ->orWhere('rua','like','%'.$request->id.'%')
+        ->orWhere('observacao','like','%'.$request->id.'%')
+        ->orderBy('nome')->get();
+    }
+
     public function post(Request $request){    
         $data = new Sindicato;
 

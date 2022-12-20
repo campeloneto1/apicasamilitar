@@ -37,7 +37,9 @@ class AcessosController extends Controller
         $data->data = $date->year.'-'.$date->month.'-'.$date->day;
         $data->hora = $date->hour.':'.$date->minute.':'.$date->second;
         $data->posto_id = $request->posto_id;
+
         $data->orgao_id = $request->orgao_id;
+        $data->observacao = $request->observacao;
         $data->created_by = Auth::id();        
 
         if($data->save()){

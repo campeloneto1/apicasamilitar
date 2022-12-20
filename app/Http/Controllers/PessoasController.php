@@ -41,6 +41,22 @@ class PessoasController extends Controller
         //->orWhere('pai','like','%'.$request->id.'%')
     }
 
+     public function where3(Request $request){    
+        return Pessoa::with('veiculos', 'manifestacoes', 'sindicatos')
+        ->where('nome','like','%'.$request->id.'%')
+        ->orWhere('alcunha','like','%'.$request->id.'%')
+        ->orWhere('cpf','like','%'.$request->id.'%')
+        ->orWhere('mae','like','%'.$request->id.'%')
+        ->orWhere('pai','like','%'.$request->id.'%')
+        ->orWhere('email','like','%'.$request->id.'%')
+        ->orWhere('rua','like','%'.$request->id.'%')
+        ->orWhere('observacao','like','%'.$request->id.'%')
+        ->orderBy('nome')->get();
+
+        //->orWhere('mae','like','%'.$request->id.'%')
+        //->orWhere('pai','like','%'.$request->id.'%')
+    }
+
     public function where2(Request $request){    
         return Pessoa::where('cpf',$request->id)->get();
 

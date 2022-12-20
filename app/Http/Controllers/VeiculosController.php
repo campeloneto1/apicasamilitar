@@ -31,6 +31,15 @@ class VeiculosController extends Controller
         ->orderBy('placa')->get();
     }
 
+     public function where2(Request $request){    
+        return Veiculo::with('pessoas', 'manifestacoes', 'sindicatos', 'arquivos')
+        ->where('placa','like','%'.$request->id.'%')
+        ->orWhere('renavam','like','%'.$request->id.'%')
+        ->orWhere('chassi','like','%'.$request->id.'%')
+        ->orWhere('observacao','like','%'.$request->id.'%')
+        ->orderBy('placa')->get();
+    }
+
     public function find(Request $request){    
        	return Veiculo::with('pessoas', 'manifestacoes', 'sindicatos', 'arquivos')->find($request->id);
     }

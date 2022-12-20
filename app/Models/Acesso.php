@@ -26,6 +26,7 @@ class Acesso extends Model
         'user_id',
         'data',
         'hora',
+        'observacao',
         'posto_id',    
         'orgao_id',
         'created_by',

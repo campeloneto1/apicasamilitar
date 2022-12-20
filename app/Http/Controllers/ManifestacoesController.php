@@ -25,6 +25,16 @@ class ManifestacoesController extends Controller
         ->orderBy('data', 'desc')->get();
     }
 
+    public function where2(Request $request){    
+        return Manifestacao::with('pessoas', 'veiculos', 'arquivos')
+        ->where('nome','like','%'.$request->id.'%')
+        ->orWhere('rua','like','%'.$request->id.'%')
+        ->orWhere('observacao','like','%'.$request->id.'%')
+        ->orWhere('previa','like','%'.$request->id.'%')
+        ->orWhere('sintese','like','%'.$request->id.'%')
+        ->orderBy('data', 'desc')->get();
+    }
+
     public function post(Request $request){    
         $data = new Manifestacao;
 
